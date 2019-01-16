@@ -22,16 +22,15 @@ def atdbquery(obs_mode):
 	start = time.time()
 
 	# Send the query
-	obs_dict = query_database(obs_mode)
-	print('Total number of results returned for %s: %s' % (obs_mode.upper(),len(obs_dict)))
-	print('Unique task IDs: %s' % len(list(set(obs_dict.keys()))))
+	obs_list = query_database(obs_mode)
+	print('Total number of results returned for %s: %s' % (obs_mode.upper(),len(obs_list)))
 
 	# End timing
 	end = time.time()
 	total = end-start
 	print('Total time to run query: %.2f sec' % (total))
 
-	return obs_dict
+	return obs_list
 
 
 # System call version
@@ -40,12 +39,12 @@ if __name__ == '__main__':
 	# Parse the relevant arguments
 	parser = ArgumentParser(formatter_class=RawTextHelpFormatter)
 	parser.add_argument('-m', '--mode',
-			default='sc4',
+			default='imaging',
 			help='Specify whether mode is imaging/sc1/sc4 (default: %(default)s)')
 
 	# Parse the arguments above
 	args = parser.parse_args()
 
 	# Send the query
-	obs_dict = atdbquery(args.mode)
-	print(obs_dict)
+	obs_list = atdbquery(args.mode)
+	print(obs_list)

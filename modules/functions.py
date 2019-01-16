@@ -33,7 +33,7 @@ def query_database(obs_mode):
 
 	# Define the observation dictionary
 	# Get only the field_name,field_ra,field_dec,status
-	obs_dict = {}
+	obs_list = []
 
 	for page in range(1,pagenum+1):
 
@@ -49,18 +49,19 @@ def query_database(obs_mode):
 		# Parse the data
 		metadata = json.loads(response.text)['results']
 
-		# for i in range(0,len(metadata)):
-		# 	obs_dict = {**obs_dict,**metadata[i]}
-
-		# Loop
+		# Return all information
 		for i in range(0,len(metadata)):
-			obs = metadata[i]
-			name = obs['field_name']
-			tid = obs['taskID']
-			ra = obs['field_ra']
-			dec = obs['field_dec']
-			status = obs['my_status']
+			obs_list.append(metadata[i])
 
-			obs_dict[tid] = {'field_name':name, 'field_ra':ra, 'field_dec':dec, 'status':status}
+		# # Loop
+		# for i in range(0,len(metadata)):
+		# 	obs = metadata[i]
+		# 	name = obs['field_name']
+		# 	tid = obs['taskID']
+		# 	ra = obs['field_ra']
+		# 	dec = obs['field_dec']
+		# 	status = obs['my_status']
 
-	return obs_dict
+		# 	obs_dict[tid] = {'field_name':name, 'field_ra':ra, 'field_dec':dec, 'status':status}
+
+	return obs_list
