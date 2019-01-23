@@ -37,7 +37,7 @@ def query_database(obs_mode):
 
 	for page in range(1,pagenum+1):
 
-		url = 'http://atdb.astron.nl/atdb/observations/?my_status__in=completed,completing,archived,removed&observing_mode__icontains=%s&page=%s' % (obs_mode,page)
+		url = 'http://atdb.astron.nl/atdb/observations/?my_status__in=completed,completing,archived,removed,on%%20hold&observing_mode__icontains=%s&page=%s' % (obs_mode,page)
 
 		# Do the query
 		try: 
