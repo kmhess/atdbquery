@@ -16,7 +16,7 @@ import json
 def query_database(obs_mode):
 
 	# Define the URL for quert
-	url = 'http://atdb.astron.nl/atdb/observations/?my_status__in=completed,completing,archived,removed&observing_mode__icontains=%s' % obs_mode
+	url = 'http://atdb.astron.nl/atdb/observations/?my_status__in=completed,completing,archived,removed,on%%20hold&observing_mode__icontains=%s' % obs_mode
 
 	# First, determine how many results there are
 	# Do the query
