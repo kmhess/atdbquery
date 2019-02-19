@@ -39,7 +39,7 @@ if __name__ == '__main__':
 	# Parse the relevant arguments
 	parser = ArgumentParser(formatter_class=RawTextHelpFormatter)
 	parser.add_argument('-m', '--mode',
-			default='imaging',
+			default='sc4',
 			help='Specify whether mode is imaging/sc1/sc4 (default: %(default)s)')
 
 	# Parse the arguments above
